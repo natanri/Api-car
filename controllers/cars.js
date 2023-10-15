@@ -2,6 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
+    //#swagger.tags=['cars']
     const result = await mongodb.getDatabase().db().collection('cars').find();
     result.toArray().then((cars) => {
         res.setHeader('Content-Type', 'application/json');
@@ -10,6 +11,7 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
+    //#swagger.tags=['cars']
     const carId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('cars').find({ _id: carId });
     result.toArray().then((cars) => {
@@ -19,6 +21,7 @@ const getSingle = async (req, res) => {
 };
 
 const createCar = async (req, res) => {
+    //#swagger.tags=['cars']
     const car = {
       brand: req.body.brand,
       model: req.body.model,
@@ -34,6 +37,7 @@ const createCar = async (req, res) => {
 };
 
 const updateCar = async (req, res) => {
+    //#swagger.tags=['cars']
     const carId = new ObjectId(req.params.id);
     const car = {
         brand: req.body.brand,
@@ -50,6 +54,7 @@ const updateCar = async (req, res) => {
 };
 
 const deleteCar = async (req, res) => {
+    //#swagger.tags=['cars']
     const carId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('cars').deleteOne({ _id: carId });
     if (response.deletedCount > 0) {
