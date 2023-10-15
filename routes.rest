@@ -1,0 +1,31 @@
+// LOCALHOST 
+### Get all cars
+ GET http://localhost:3001/cars
+
+### Get car by id 
+GET http://localhost:3001/cars/6528e8975b8f224062df3953  
+
+### Create car 
+POST http://localhost:3001/cars/ HTTP/1.1 
+content-type: application/json
+
+{
+    "brand": "test",
+    "model": "test",
+    "year": "2000",
+    "doors": "test"
+}
+
+### PUT car 
+PUT http://localhost:3001/cars/6506652867a79e685b213b1b HTTP/1.1 
+content-type: application/json 
+
+{
+    "brand": "Toyota",
+    "model": "Solara",
+    "year": "2001",
+    "doors": "2-door"
+}
+
+### Delete car 
+DELETE http://localhost:3001/cars/652b0740dda5684cddce1587
