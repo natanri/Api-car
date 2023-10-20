@@ -17,7 +17,7 @@ app
     }))
     // basic express session({..}) initialization.
     .use(passport.initialize())
-// allows passport to use "express-sesson"
+// allows passport to use "express-session"
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
@@ -43,10 +43,12 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out") });
+app.get('/', (req, res) => { 
+    res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out") });
 
 app.get('/github/callback', passport.authenticate('github', {
-    failureRedirect: '/api-docs', session: false
+    failureRedirect: '/api-docs', 
+    session: false
 }),
     (req, res) => {
         req.session.user = req.user;
