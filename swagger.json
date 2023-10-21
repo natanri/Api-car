@@ -8,8 +8,8 @@
   "host": "api-car-jk1m.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https",
     "http"
+    
   ],
   "paths": {
     "/": {

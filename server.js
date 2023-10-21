@@ -54,8 +54,11 @@ app.get('/github/callback', passport.authenticate('github', {
     }
 );
 
-
 app.use('/', require('./routes'));
+
+process.on('uncaughtException', (err, origin) => {
+    console.log(process.stderr.fd, `Caught exepction at: ${origin}\n` +  `Exception origin: ${origin}`);
+})
 
 mongodb.initDb((err) => {
     if (err) {
