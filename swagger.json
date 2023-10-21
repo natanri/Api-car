@@ -5,10 +5,10 @@
     "description": "Users Api",
     "version": "1.0.0"
   },
-  "host": "api-car-jk1m.onrender.com",
+  "host": "localhost:3001",
   "basePath": "/",
   "schemes": [
-    "https"    
+    "http"    
   ],
   "paths": {
     "/": {
