@@ -1,6 +1,6 @@
-const validator = require('validatejs');
+const Validator = require('validatejs');
 const validate = (body, rules, customMessages, callback) =>{
-    const validation = new ValidatorsImpl(body, rules, customMessages, callback);
+    const validation = new Validator(body, rules, customMessages, callback);
     validation.passes(() => callback(null, true));
     validation.fails(() => callback(validation.errors, false));
 };
