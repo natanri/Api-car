@@ -1,14 +1,14 @@
-const validate = require('../helpers/validate');
+const validator = require('../helpers/validate');
 
 const saveCar = (req, res, next) => {
     const validationRule = {
         "brand": 'required|string',
         "model": 'required|string',
         "year": 'required|numeric',
-        "doors": 'required|string'
+        "doors": 'required|numeric'
         
     };
-    validate(req.body, validationRule, {}, (err, status) => { // Change 'validator' to 'validate'
+    validator(req.body, validationRule, {}, (err, status) => {
         if (!status) {
             res.status(412).send({
                 success: false,

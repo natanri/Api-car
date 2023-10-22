@@ -1,15 +1,8 @@
-const validator = require('validatejs');
-
-const validate = (body, rules, customMessages, callback) => {
-    const validation = validator(body, rules, customMessages);
-    
-    if (!validation) {
-        // Validation failed
-        callback(validator.getErrors(), false);
-    } else {
-        // Validation passed
-        callback(null, true);
-    }
+const validator = require('express-validator');
+const validation = (body, rules, customMessages, callback) =>{
+    const validation = new ValidatorsImpl(body, rules, customMessages, callback);
+    validation.passes(() => callback(null, true));
+    validation.fails(() => callback(validation.errors, false));
 };
 
-module.exports = validate;
+module.exports = validator;
