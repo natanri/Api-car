@@ -31,6 +31,7 @@
     "swagger-autogen": "^2.23.6",
     "swagger-ui": "^5.9.0",
     "swagger-ui-express": "^5.0.0",
+    "validatejs": "^0.0.2",
     "validatorjs": "^3.22.1"
   }
 }
