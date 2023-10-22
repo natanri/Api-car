@@ -2,7 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
-    mongodb
+    /*mongodb
         .getDatabase()
         .db()
         .collection("cars")
@@ -13,13 +13,13 @@ const getAll = async (req, res) => {
             }
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(cars);
-        });
+        });*/
     //#swagger.tags=['cars']
-    /*const result = await mongodb.getDatabase().db().collection('cars').find();
+    const result = await mongodb.getDatabase().db().collection('cars').find();
     result.toArray().then((cars) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(cars);
-    });*/
+    });
 };
 
 const getSingle = async (req, res) => {
@@ -28,7 +28,7 @@ const getSingle = async (req, res) => {
     }
     //#swagger.tags=['cars']
     const carId = new ObjectId(req.params.id);
-    mongodb
+    /*mongodb
         .getDatabase()
         .db()
         .collection("cars")
@@ -39,12 +39,12 @@ const getSingle = async (req, res) => {
             }
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(result[0]);
-        });       
-    /*const result = await mongodb.getDatabase().db().collection('cars').find({ _id: carId });
+        });*/   
+    const result = await mongodb.getDatabase().db().collection('cars').find({ _id: carId });
     result.toArray().then((cars) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(cars[0]);
-    });*/
+    });
 };
 
 const createCar = async (req, res) => {
