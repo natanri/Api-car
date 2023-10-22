@@ -2,10 +2,10 @@ const validator = require('../helpers/validate');
 
 const saveCar = (req, res, next) => {
     const validationRule = {
-        brand: 'required|string',
-        model: 'required|string',
-        year: 'required|number',
-        doors: 'required| number'
+        "brand": 'required|string',
+        "model": 'required|string',
+        "year": 'required|numeric',
+        "doors": 'required|numeric'
         
     };
     validator(req.body, validationRule, {}, (err, status) => {

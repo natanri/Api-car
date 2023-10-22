@@ -56,7 +56,7 @@ const createCar = async (req, res) => {
       doors: req.body.doors  
     };
     const response = await mongodb.getDatabase().db().collection('cars').insertOne(car);
-    if (response.acknowledged) { // i removed > 0, because it is not necesary here
+    if (response.acknowledged) { // i removed > 0, because it is not necessary here
         res.status(204).send();
     } else {
         res.status(500).json(response.error || 'Some error occurred while creating the car.');
