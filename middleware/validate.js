@@ -5,10 +5,10 @@ const saveCar = (req, res, next) => {
         "brand": 'required|string',
         "model": 'required|string',
         "year": 'required|numeric',
-        "doors": 'required|numeric'
+        "doors": 'required|string'
         
     };
-    validator(req.body, validationRule, {}, (err, status) => {
+    validate(req.body, validationRule, {}, (err, status) => { // Change 'validator' to 'validate'
         if (!status) {
             res.status(412).send({
                 success: false,
