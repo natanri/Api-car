@@ -6,9 +6,9 @@ const validation = require('../middleware/validate')
 const { isAuthenticated } = require("../middleware/authenticate");
 
 
-router.get('/', maintenanceController.getAll);
+router.get('/', isAuthenticated, maintenanceController.getAll);
 
-router.get('/:id', maintenanceController.getSingle);
+router.get('/:id', isAuthenticated, maintenanceController.getSingle);
 
 router.post('/', isAuthenticated, validation.saveMaintenance, maintenanceController.createMaintenance);
 

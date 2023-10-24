@@ -6,9 +6,9 @@ const validation = require('../middleware/validate')
 const { isAuthenticated } = require("../middleware/authenticate");
 
 
-router.get('/', salesController.getAll);
+router.get('/', isAuthenticated, salesController.getAll);
 
-router.get('/:id', salesController.getSingle);
+router.get('/:id', isAuthenticated, salesController.getSingle);
 
 router.post('/', isAuthenticated, validation.saveSale, salesController.createSale);
 
