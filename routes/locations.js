@@ -10,9 +10,9 @@ router.get('/', locationsController.getAll);
 
 router.get('/:id', locationsController.getSingle);
 
-router.post('/', isAuthenticated, saveLocation, locationsController.createLocation);
+router.post('/', isAuthenticated, validation.saveLocation, locationsController.createLocation);
 
-router.put('/:id', isAuthenticated, saveLocation, locationsController.updateLocation);
+router.put('/:id', isAuthenticated, validation.saveLocation, locationsController.updateLocation);
 
 router.delete('/:id', isAuthenticated, locationsController.deleteLocation);
 

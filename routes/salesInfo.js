@@ -10,10 +10,10 @@ router.get('/', salesController.getAll);
 
 router.get('/:id', salesController.getSingle);
 
-router.post('/', isAuthenticated, saveSale, salesController.createSale);
+router.post('/', isAuthenticated, validation.saveSale, salesController.createSale);
 
-router.put('/:id', isAuthenticated, saveSale, salesController.updateSale);
+router.put('/:id', isAuthenticated, validation.saveSale, salesController.updateSale);
 
-router.delete('/:id', isAuthenticated, salesController.deleteSale);
+router.delete('/:id', isAuthenticated, validation.salesController.deleteSale);
 
 module.exports = router;

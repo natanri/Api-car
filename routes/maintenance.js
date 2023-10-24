@@ -10,10 +10,10 @@ router.get('/', maintenanceController.getAll);
 
 router.get('/:id', maintenanceController.getSingle);
 
-router.post('/', isAuthenticated, saveMaintenance, maintenanceController.createMaintenance);
+router.post('/', isAuthenticated, validation.saveMaintenance, maintenanceController.createMaintenance);
 
-router.put('/:id', isAuthenticated, saveMaintenance, maintenanceController.updateMaintenance);
+router.put('/:id', isAuthenticated, validation.saveMaintenance, maintenanceController.updateMaintenance);
 
-router.delete('/:id', isAuthenticated, maintenanceController.deleteMaintenance);
+router.delete('/:id', isAuthenticated, validation.maintenanceController.deleteMaintenance);
 
 module.exports = router;
