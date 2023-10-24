@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const maintenanceController = require('../controllers/maintenance');
+const validation = require('../middleware/validate')
 const { isAuthenticated } = require("../middleware/authenticate");
 
 
@@ -9,9 +10,9 @@ router.get('/', maintenanceController.getAll);
 
 router.get('/:id', maintenanceController.getSingle);
 
-router.post('/', isAuthenticated, maintenanceController.createMaintenance);
+router.post('/', isAuthenticated, saveMaintenance, maintenanceController.createMaintenance);
 
-router.put('/:id', isAuthenticated, maintenanceController.updateMaintenance);
+router.put('/:id', isAuthenticated, saveMaintenance, maintenanceController.updateMaintenance);
 
 router.delete('/:id', isAuthenticated, maintenanceController.deleteMaintenance);
 
