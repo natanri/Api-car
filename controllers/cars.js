@@ -111,7 +111,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res) => {
     //#swagger.tags['Cars']
     try {
-        const result = await mongodb.getDatabase().collection('cars').find();
+        const result = await mongodb.getDatabase().db().collection('cars').find();
         const cars = await result.toArray();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(cars);
@@ -125,7 +125,7 @@ const getSingle = async (req, res) => {
     //#swagger.tags['Cars']
     try {
         const carId = new ObjectId(req.params.id);
-        const result = await mongodb.getDatabase().collection('cars').find({ _id: carId });
+        const result = await mongodb.getDatabase().db().collection('cars').find({ _id: carId });
         const cars = await result.toArray();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(cars[0]);
@@ -144,7 +144,7 @@ const createCar = async (req, res) => {
             year: req.body.year,
             doors: req.body.doors 
         };
-        const response = await mongodb.getDatabase().collection('cars').insertOne(car);
+        const response = await mongodb.getDatabase().db().collection('cars').insertOne(car);
         if (response.acknowledged > 0) {
             res.status(204).send();
         } else {
@@ -166,7 +166,7 @@ const updateCar = async (req, res) => {
             year: req.body.year,
             doors: req.body.doors 
         };
-        const response = await mongodb.getDatabase().collection('cars').replaceOne({ _id: carId }, car);
+        const response = await mongodb.getDatabase().db().collection('cars').replaceOne({ _id: carId }, car);
         if (response.modifiedCount > 0) {
             res.status(204).send();
         } else {
@@ -182,7 +182,7 @@ const deleteCar = async (req, res) => {
     //#swagger.tags['Cars']
     try {
         const carId = new ObjectId(req.params.id);
-        const response = await mongodb.getDatabase().collection('cars').deleteOne({ _id: carId });
+        const response = await mongodb.getDatabase().db().collection('cars').deleteOne({ _id: carId });
         if (response.deletedCount > 0) {
             res.status(204).send();
         } else {
