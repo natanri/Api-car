@@ -14,6 +14,6 @@ router.post('/', isAuthenticated, validation.saveMaintenance, maintenanceControl
 
 router.put('/:id', isAuthenticated, validation.saveMaintenance, maintenanceController.updateMaintenance);
 
-router.delete('/:id', isAuthenticated, validation.maintenanceController.deleteMaintenance);
+router.delete('/:id', isAuthenticated, maintenanceController.deleteMaintenance);
 
 module.exports = router;

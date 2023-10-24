@@ -14,6 +14,6 @@ router.post('/', isAuthenticated, validation.saveSale, salesController.createSal
 
 router.put('/:id', isAuthenticated, validation.saveSale, salesController.updateSale);
 
-router.delete('/:id', isAuthenticated, validation.salesController.deleteSale);
+router.delete('/:id', isAuthenticated, salesController.deleteSale);
 
 module.exports = router;
