@@ -1,25 +1,46 @@
 const validator = require('../helpers/validate');
 
-const saveCar = (req, res, next) => {
+const saveCar = async (req, res, next) => {
     const validationRule = {
         "brand": 'required|string',
         "model": 'required|string',
         "year": 'required|numeric',
-        "doors": 'required|numeric'
+        "doors": 'required|string'
         
     };
-    validator(req.body, validationRule, {}, (err, status) => {
-        if (!status) {
-            res.status(412).send({
-                success: false,
-                message: 'Validation failed',
-                data: err                
-            });
-        } else {
-            next();
-        }
-    });
+
+    try {
+      await new Promise((resolve, reject) => {
+        validator(req.body, validationRule, {}, (err, status) => {
+          if (!status) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        });
+      });
+      next();
+    } catch (error) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: error,
+      });
+    }
 };
+//     validator(req.body, validationRule, {}, (err, status) => {
+//         if (!status) {
+//             res.status(412).send({
+//                 success: false,
+//                 message: 'Validation failed',
+//                 data: err                
+//             });
+//         } else {
+//             next();
+//         }
+//     });
+// };
+
 
 module.exports = {
     saveCar
