@@ -7,7 +7,7 @@ const getAll = async (req, res) => {
         const result = await mongodb.getDatabase().db().collection('customers').find();
         const customers = await result.toArray();
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(cars);
+        res.status(200).json(customers);
     } catch (error) {
         console.error('Error in getAll:', error);
         res.status(500).json('Internal server error');
